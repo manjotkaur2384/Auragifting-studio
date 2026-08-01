@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura Gifting Studio | Curated Hampers & Luxury Gifting</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              cream: '#FAF6F0',
+              rose: '#E8D5C8',
+              blush: '#F3E5DC',
+              gold: '#C5A059',
+              goldhover: '#B38E46',
+              dark: '#2C2623',
+              accent: '#8C6D58',
+              surface: '#FFFFFF',
+            }
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #FAF6F0;
+      color: #2C2623;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .font-serif-title {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #A88138 0%, #C5A059 50%, #8C6D58 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .glass-nav {
+      background: rgba(250, 246, 240, 0.85);
+      backdrop-filter: blur(12px);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #FAF6F0;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #C5A059;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-brand-rose selection:text-brand-dark">
+
+  <!-- Header / Navigation -->
+  <header class="sticky top-0 z-40 glass-nav border-b border-brand-rose/40 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="#" class="flex flex-col items-start group">
+          <span class="font-serif-title text-2xl sm:text-3xl font-bold tracking-widest text-brand-dark group-hover:text-brand-gold transition">
+            AURA
+          </span>
+          <span class="text-[10px] tracking-[0.25em] text-brand-accent uppercase -mt-1 font-medium">
+            Gifting Studio
+          </span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
+          <a href="#collections" class="hover:text-brand-gold transition py-1">Collections</a>
+          <a href="#bridal" class="hover:text-brand-gold transition py-1">Bridal</a>
+          <a href="#favours" class="hover:text-brand-gold transition py-1">Return Favours</a>
+          <a href="#corporate" class="hover:text-brand-gold transition py-1">Corporate</a>
+          <a href="#customizer" class="hover:text-brand-gold transition py-1">Custom Builder</a>
+          <a href="#how-it-works" class="hover:text-brand-gold transition py-1">Process</a>
+        </nav>
+
+        <!-- CTA Button -->
+        <div class="hidden md:flex items-center space-x-4">
+          <button onclick="scrollToCustomizer()" class="bg-brand-gold text-white hover:bg-brand-goldhover px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition shadow-sm hover:shadow-md flex items-center space-x-2">
+            <span>Design Custom Gift</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobileMenuBtn" class="md:hidden p-2 text-brand-dark focus:outline-none" aria-label="Toggle menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobileMenu" class="hidden md:hidden border-b border-brand-rose/40 bg-brand-cream px-4 pt-2 pb-6 space-y-3 text-sm">
+      <a href="#collections" onclick="toggleMobileMenu()" class="block py-2 font-medium hover:text-brand-gold">Collections</a>
+      <a href="#bridal" onclick="toggleMobileMenu()" class="block py-2 font-medium hover:text-brand-gold">Bridal Packages</a>
+      <a href="#favours" onclick="toggleMobileMenu()" class="block py-2 font-medium hover:text-brand-gold">Return Favours</a>
+      <a href="#corporate" onclick="toggleMobileMenu()" class="block py-2 font-medium hover:text-brand-gold">Corporate Gifting</a>
+      <a href="#customizer" onclick="toggleMobileMenu()" class="block py-2 font-medium hover:text-brand-gold">Custom Builder</a>
+      <a href="#how-it-works" onclick="toggleMobileMenu()" class="block py-2 font-medium hover:text-brand-gold">How It Works</a>
+      <button onclick="toggleMobileMenu(); scrollToCustomizer();" class="w-full mt-2 bg-brand-gold text-white py-3 rounded-full text-xs font-semibold uppercase tracking-wider">Design Custom Gift</button>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden py-16 sm:py-24 bg-gradient-to-b from-brand-cream via-brand-blush/30 to-brand-cream">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center max-w-3xl mx-auto space-y-6">
+          <span class="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-brand-accent bg-brand-rose/40 px-4 py-1.5 rounded-full">
+            Curated Hampers • Luxury Gifting • Thoughtful Moments
+          </span>
+          
+          <h1 class="font-serif-title text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight text-brand-dark leading-tight">
+            Where Every Gift <br class="hidden sm:inline"/>
+            <span class="italic font-serif-title gold-gradient-text font-normal">Tells a Story</span>
+          </h1>
+          
+          <p class="text-base sm:text-lg text-brand-dark/80 max-w-2xl mx-auto font-light leading-relaxed">
+            From intimate celebrations to grand occasions, we design personalized hampers crafted with elegance, love, and meticulous attention to detail.
+          </p>
+          
+          <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#collections" class="w-full sm:w-auto px-8 py-3.5 bg-brand-dark text-white rounded-full text-xs uppercase font-semibold tracking-widest hover:bg-brand-gold transition shadow-md">
+              Explore Collections
+            </a>
+            <a href="#customizer" class="w-full sm:w-auto px-8 py-3.5 border border-brand-gold text-brand-dark rounded-full text-xs uppercase font-semibold tracking-widest hover:bg-brand-rose/30 transition">
+              Personalize Your Own
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Decorative background glow -->
+      <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brand-rose/20 rounded-full blur-3xl -z-0 pointer-events-none"></div>
+    </section>
+
+    <!-- Search & Filter Section -->
+    <section class="py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 pb-4 border-b border-brand-rose/40">
+        
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap justify-center gap-2" id="filterContainer">
+          <button data-filter="all" class="filter-btn active-filter px-5 py-2 rounded-full text-xs font-medium tracking-wide transition bg-brand-gold text-white shadow-sm">
+            All Creations
+          </button>
+          <button data-filter="signature" class="filter-btn px-5 py-2 rounded-full text-xs font-medium tracking-wide transition bg-white text-brand-dark border border-brand-rose/60 hover:border-brand-gold">
+            Signature Collections
+          </button>
+          <button data-filter="bridal" class="filter-btn px-5 py-2 rounded-full text-xs font-medium tracking-wide transition bg-white text-brand-dark border border-brand-rose/60 hover:border-brand-gold">
+            Bridal Hampers
+          </button>
+          <button data-filter="favours" class="filter-btn px-5 py-2 rounded-full text-xs font-medium tracking-wide transition bg-white text-brand-dark border border-brand-rose/60 hover:border-brand-gold">
+            Return Favours
+          </button>
+          <button data-filter="corporate" class="filter-btn px-5 py-2 rounded-full text-xs font-medium tracking-wide transition bg-white text-brand-dark border border-brand-rose/60 hover:border-brand-gold">
+            Corporate
+          </button>
+        </div>
+
+        <!-- Search Input -->
+        <div class="relative w-full md:w-64">
+          <input type="text" id="searchInput" placeholder="Search products, occasions..." class="w-full pl-9 pr-4 py-2 bg-white border border-brand-rose/60 rounded-full text-xs text-brand-dark focus:outline-none focus:border-brand-gold transition" />
+          <svg class="w-4 h-4 absolute left-3 top-2.5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catalogue Grid -->
+    <section id="collections" class="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="catalogueGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Cards will be dynamically rendered / filtered here -->
+      </div>
+    </section>
+
+    <!-- Interactive Custom Hamper Builder Section -->
+    <section id="customizer" class="py-16 bg-gradient-to-br from-brand-blush/40 via-brand-cream to-brand-rose/20 border-y border-brand-rose/40">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center space-y-3 mb-10">
+          <span class="text-xs font-semibold tracking-[0.25em] text-brand-accent uppercase">Interactive Studio</span>
+          <h2 class="font-serif-title text-3xl sm:text-5xl text-brand-dark">Build Your Custom Gift Hamper</h2>
+          <p class="text-xs sm:text-sm text-brand-dark/70">Select your options below to create a tailored hamper quote request to send us directly.</p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-brand-rose/30 space-y-8">
+          
+          <!-- Step 1: Occasion -->
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-brand-accent mb-3">1. Select Occasion</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="builderOccasion">
+              <button onclick="selectBuilderOption('occasion', 'Birthday')" class="builder-btn py-3 px-4 rounded-xl border border-brand-rose text-xs font-medium text-center hover:border-brand-gold transition">Birthday</button>
+              <button onclick="selectBuilderOption('occasion', 'Anniversary')" class="builder-btn py-3 px-4 rounded-xl border border-brand-rose text-xs font-medium text-center hover:border-brand-gold transition">Anniversary</button>
+              <button onclick="selectBuilderOption('occasion', 'Wedding / Bridal')" class="builder-btn py-3 px-4 rounded-xl border border-brand-rose text-xs font-medium text-center hover:border-brand-gold transition">Wedding / Bridal</button>
+              <button onclick="selectBuilderOption('occasion', 'Corporate / Event')" class="builder-btn py-3 px-4 rounded-xl border border-brand-rose text-xs font-medium text-center hover:border-brand-gold transition">Corporate / Event</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Target Budget -->
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <label class="block text-xs font-semibold uppercase tracking-wider text-brand-accent">2. Target Budget</label>
+              <span id="budgetValue" class="font-serif-title text-lg font-bold text-brand-gold">$150</span>
+            </div>
+            <input type="range" id="budgetRange" min="50" max="600" step="25" value="150" class="w-full accent-brand-gold cursor-pointer" oninput="updateBudget(this.value)" />
+            <div class="flex justify-between text-[11px] text-brand-dark/60 mt-1">
+              <span>$50 (Essentials)</span>
+              <span>$300 (Luxe)</span>
+              <span>$600+ (Grand Luxury)</span>
+            </div>
+          </div>
+
+          <!-- Step 3: Select Desired Items -->
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-brand-accent mb-3">3. Preferred Inclusions (Select multiple)</label>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="builderItems">
+              <label class="flex items-center space-x-2 p-3 border border-brand-rose/60 rounded-xl cursor-pointer hover:bg-brand-cream/50 transition text-xs">
+                <input type="checkbox" value="Chocolates & Sweet Treats" class="builder-checkbox accent-brand-gold" onchange="updateCustomizerSummary()">
+                <span>Chocolates & Sweets</span>
+              </label>
+              <label class="flex items-center space-x-2 p-3 border border-brand-rose/60 rounded-xl cursor-pointer hover:bg-brand-cream/50 transition text-xs">
+                <input type="checkbox" value="Self-care & Beauty Essentials" class="builder-checkbox accent-brand-gold" onchange="updateCustomizerSummary()">
+                <span>Self-care & Beauty</span>
+              </label>
+              <label class="flex items-center space-x-2 p-3 border border-brand-rose/60 rounded-xl cursor-pointer hover:bg-brand-cream/50 transition text-xs">
+                <input type="checkbox" value="Custom Keepsakes / Drinkware" class="builder-checkbox accent-brand-gold" onchange="updateCustomizerSummary()">
+                <span>Custom Drinkware</span>
+              </label>
+              <label class="flex items-center space-x-2 p-3 border border-brand-rose/60 rounded-xl cursor-pointer hover:bg-brand-cream/50 transition text-xs">
+                <input type="checkbox" value="Fresh/Artificial Floral Accents" class="builder-checkbox accent-brand-gold" onchange="updateCustomizerSummary()">
+                <span>Floral Arrangements</span>
+              </label>
+              <label class="flex items-center space-x-2 p-3 border border-brand-rose/60 rounded-xl cursor-pointer hover:bg-brand-cream/50 transition text-xs">
+                <input type="checkbox" value="Scented Candles & Fragrances" class="builder-checkbox accent-brand-gold" onchange="updateCustomizerSummary()">
+                <span>Candles & Fragrance</span>
+              </label>
+              <label class="flex items-center space-x-2 p-3 border border-brand-rose/60 rounded-xl cursor-pointer hover:bg-brand-cream/50 transition text-xs">
+                <input type="checkbox" value="Personalized Robe / Silk Keepsake" class="builder-checkbox accent-brand-gold" onchange="updateCustomizerSummary()">
+                <span>Personalized Robe</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Summary Box & Send Action -->
+          <div class="bg-brand-cream/80 p-5 rounded-2xl border border-brand-rose/40 space-y-4">
+            <h4 class="font-serif-title text-xl font-medium text-brand-dark">Order Inquiry Summary</h4>
+            <div id="customizerSummary" class="text-xs text-brand-dark/80 space-y-1">
+              <p>• <strong>Occasion:</strong> <span id="sumOccasion">Not selected</span></p>
+              <p>• <strong>Estimated Budget:</strong> <span id="sumBudget">$150</span></p>
+              <p>• <strong>Selected Items:</strong> <span id="sumItems">None selected</span></p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+              <button onclick="copyCustomizerDetails()" class="flex-1 bg-brand-dark text-white py-3 rounded-xl text-xs font-semibold uppercase tracking-wider hover:bg-brand-gold transition shadow-md flex items-center justify-center space-x-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                <span>Copy Order Specs for DM</span>
+              </button>
+              <button onclick="openInquiryModal('Custom Hamper Request')" class="flex-1 bg-brand-gold text-white py-3 rounded-xl text-xs font-semibold uppercase tracking-wider hover:bg-brand-goldhover transition shadow-md">
+                Direct Inquiry Form
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- How Customization Works -->
+    <section id="how-it-works" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center space-y-3 mb-12">
+        <span class="text-xs font-semibold tracking-[0.25em] text-brand-accent uppercase">Simple & Seamless</span>
+        <h2 class="font-serif-title text-3xl sm:text-5xl text-brand-dark">How Customization Works</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="bg-white p-8 rounded-2xl border border-brand-rose/40 relative shadow-sm hover:shadow-md transition group">
+          <div class="w-12 h-12 rounded-full bg-brand-blush flex items-center justify-center font-serif-title text-xl font-bold text-brand-gold mb-6 group-hover:bg-brand-gold group-hover:text-white transition">
+            1
+          </div>
+          <h3 class="font-serif-title text-xl font-semibold mb-2">Share Details</h3>
+          <p class="text-xs text-brand-dark/75 leading-relaxed">Tell us your occasion, preferred theme, design inspirations & budget limit.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl border border-brand-rose/40 relative shadow-sm hover:shadow-md transition group">
+          <div class="w-12 h-12 rounded-full bg-brand-blush flex items-center justify-center font-serif-title text-xl font-bold text-brand-gold mb-6 group-hover:bg-brand-gold group-hover:text-white transition">
+            2
+          </div>
+          <h3 class="font-serif-title text-xl font-semibold mb-2">Choose Products</h3>
+          <p class="text-xs text-brand-dark/75 leading-relaxed">Pick from our premium range of treats, keepsakes, candles, beauty & florals.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl border border-brand-rose/40 relative shadow-sm hover:shadow-md transition group">
+          <div class="w-12 h-12 rounded-full bg-brand-blush flex items-center justify-center font-serif-title text-xl font-bold text-brand-gold mb-6 group-hover:bg-brand-gold group-hover:text-white transition">
+            3
+          </div>
+          <h3 class="font-serif-title text-xl font-semibold mb-2">We Curate</h3>
+          <p class="text-xs text-brand-dark/75 leading-relaxed">We style a breathtaking arrangement with custom ribbons, notes & packaging.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl border border-brand-rose/40 relative shadow-sm hover:shadow-md transition group">
+          <div class="w-12 h-12 rounded-full bg-brand-blush flex items-center justify-center font-serif-title text-xl font-bold text-brand-gold mb-6 group-hover:bg-brand-gold group-hover:text-white transition">
+            4
+          </div>
+          <h3 class="font-serif-title text-xl font-semibold mb-2">Delivered With Love</h3>
+          <p class="text-xs text-brand-dark/75 leading-relaxed">Your gift is carefully delivered directly to your door or the recipient’s hands.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Why Choose Aura Gifting Studio -->
+    <section class="py-16 bg-brand-dark text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center space-y-3 mb-12">
+          <span class="text-xs font-semibold tracking-[0.25em] text-brand-gold uppercase">The Aura Touch</span>
+          <h2 class="font-serif-title text-3xl sm:text-5xl">Why Choose Aura Gifting Studio?</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="p-6 rounded-2xl bg-white/5 border border-white/10 text-center space-y-3">
+            <div class="w-12 h-12 mx-auto rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.684a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            </div>
+            <h3 class="font-serif-title text-xl">Personalized Designs</h3>
+            <p class="text-xs text-white/70 leading-relaxed">Every detail is tailored to express your exact sentiment with customized names and theme accents.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white/5 border border-white/10 text-center space-y-3">
+            <div class="w-12 h-12 mx-auto rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+            </div>
+            <h3 class="font-serif-title text-xl">Premium Presentation</h3>
+            <p class="text-xs text-white/70 leading-relaxed">We source luxury packaging boxes, rigid baskets, velvet ribbons, and fresh floral accents.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white/5 border border-white/10 text-center space-y-3">
+            <div class="w-12 h-12 mx-auto rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="font-serif-title text-xl">Gifts for Every Budget</h3>
+            <p class="text-xs text-white/70 leading-relaxed">From single return favour items at $5 to grand $599+ VIP luxury experiences, we craft elegance at any scale.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Banner -->
+    <section class="py-16 text-center max-w-4xl mx-auto px-4">
+      <div class="bg-brand-rose/30 border border-brand-rose p-8 sm:p-12 rounded-3xl space-y-6">
+        <h2 class="font-serif-title text-3xl sm:text-5xl text-brand-dark">Let’s Create Something Beautiful</h2>
+        <p class="text-sm text-brand-dark/80 max-w-xl mx-auto">
+          Ready to order or need custom recommendations? Contact our team directly or message us on Instagram to craft your perfect gift hamper.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <button onclick="openInquiryModal('General Custom Order')" class="w-full sm:w-auto px-8 py-3.5 bg-brand-gold text-white rounded-full text-xs font-semibold uppercase tracking-widest hover:bg-brand-goldhover transition shadow-md">
+            Submit Order Inquiry
+          </button>
+          <button onclick="copyInstagramDM()" class="w-full sm:w-auto px-8 py-3.5 bg-white border border-brand-gold text-brand-dark rounded-full text-xs font-semibold uppercase tracking-widest hover:bg-brand-cream transition flex items-center justify-center space-x-2">
+            <svg class="w-4 h-4 text-pink-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <span>Copy DM Text</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-brand-dark text-white border-t border-white/10 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+      <div class="flex flex-col items-center">
+        <span class="font-serif-title text-3xl font-bold tracking-widest text-brand-gold">AURA</span>
+        <span class="text-[10px] tracking-[0.25em] text-white/60 uppercase">Gifting Studio</span>
+      </div>
+      <p class="text-xs text-white/60 max-w-md mx-auto">Personalized hampers crafted with elegance, love, and attention to detail for all of life's special moments.</p>
+      <div class="pt-4 border-t border-white/10 text-[11px] text-white/40">
+        &copy; 2026 Aura Gifting Studio. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Component for Details -->
+  <div id="detailsModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto custom-scrollbar shadow-2xl border border-brand-rose/40">
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-brand-dark/50 hover:text-brand-dark p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div id="modalContent">
+        <!-- Content inserted dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-brand-dark text-white text-xs px-5 py-3 rounded-xl shadow-xl border border-brand-gold/40 flex items-center space-x-2">
+    <svg class="w-4 h-4 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+    <span id="toastMsg">Copied to clipboard!</span>
+  </div>
+
+  <!-- JavaScript Data & Logic -->
+  <script>
+    // Hamper Catalogue Dataset
+    const hampers = [
+      {
+        id: 'little-love',
+        category: 'signature',
+        title: 'The Little Love Hamper',
+        price: 'Starting at $99',
+        tagline: 'Perfect for birthdays, anniversaries, thank-you gifts & “just because” moments.',
+        imageBg: 'from-amber-100 to-rose-100',
+        badge: 'Popular',
+        includes: [
+          'Premium gift packaging',
+          'Customized keepsake item',
+          'Chocolates & sweet treats',
+          'Self-care essentials',
+          'Fresh/artificial floral accents',
+          'Personalized note card'
+        ],
+        idealFor: 'Birthdays, Anniversaries, Thank-You Gifts, Just-Because Moments',
+        customizable: 'Customization available based on your budget and preferences.'
+      },
+      {
+        id: 'celebration',
+        category: 'signature',
+        title: 'The Celebration Hamper',
+        price: '$149 – $199',
+        tagline: 'A beautiful way to celebrate someone special.',
+        imageBg: 'from-rose-100 to-orange-100',
+        badge: 'Best Value',
+        includes: [
+          'Luxury basket/box arrangement',
+          'Premium chocolates (Lindt/Ferrero & more)',
+          'Customized drinkware or keepsake',
+          'Beauty & self-care products',
+          'Candles/fragrances',
+          'Fresh flowers',
+          'Personalized message card'
+        ],
+        idealFor: 'Birthdays • Anniversaries • Milestones • Congratulations',
+        customizable: 'Full customization available.'
+      },
+      {
+        id: 'luxe-signature',
+        category: 'signature',
+        title: 'The Luxe Signature Hamper',
+        price: '$299 – $399',
+        tagline: 'A statement gift designed to impress.',
+        imageBg: 'from-yellow-100 to-amber-200',
+        badge: 'Luxury',
+        includes: [
+          'Premium curated products',
+          'Luxury skincare & beauty items',
+          'Designer-inspired accessories',
+          'Gourmet treats',
+          'Fresh floral arrangements',
+          'Customized keepsakes',
+          'Elegant luxury packaging'
+        ],
+        idealFor: 'Corporate Gifting • Premium Celebrations • Special Occasions',
+        customizable: 'Tailored branding & personalization options.'
+      },
+      {
+        id: 'grand-luxury',
+        category: 'signature',
+        title: 'The Grand Luxury Experience',
+        price: '$599+',
+        tagline: 'For moments that deserve something extraordinary.',
+        imageBg: 'from-amber-200 via-rose-100 to-yellow-100',
+        badge: 'VIP Signature',
+        includes: [
+          'Large luxury hamper styling',
+          'Premium brand products',
+          'Multiple personalized gifts',
+          'Statement floral arrangement',
+          'Exclusive packaging experience',
+          'Custom theme designing'
+        ],
+        idealFor: 'Wedding Gifting • Luxury Celebrations • VIP Gifting',
+        customizable: 'Fully bespoke theme design and concierge curation.'
+      },
+      {
+        id: 'bride-to-be',
+        category: 'bridal',
+        title: 'Bride-To-Be Essentials',
+        price: 'Starting at $199',
+        tagline: 'Bridal self-care and keepsakes designed for the bride.',
+        imageBg: 'from-pink-100 to-purple-100',
+        badge: 'Bridal',
+        includes: [
+          'Bridal self-care products',
+          'Personalized robe / sipper',
+          'Beauty essentials',
+          'Jewellery / accessories',
+          'Candles & treats',
+          'Custom bride packaging'
+        ],
+        idealFor: 'Bridal Showers, Bachelorette Parties, Engagement Gifts',
+        customizable: 'Custom names, date embroideries and color accents.'
+      },
+      {
+        id: 'wedding-day-box',
+        category: 'bridal',
+        title: 'Wedding Day Luxury Box',
+        price: 'Starting at $399+',
+        tagline: 'An elegant treasure box for the special wedding day.',
+        imageBg: 'from-stone-100 to-rose-200',
+        badge: 'Bridal Premium',
+        includes: [
+          'Premium bridal essentials',
+          'Personalized keepsakes',
+          'Jewellery pieces',
+          'Fragrance & self-care collection',
+          'Luxury packaging',
+          'Custom wedding theme'
+        ],
+        idealFor: 'Wedding Day Gifts, Groom to Bride, Special Keepsake',
+        customizable: 'Coordinated with wedding color palette and monogramming.'
+      },
+      {
+        id: 'return-favours',
+        category: 'favours',
+        title: 'Curated Return Favours',
+        price: 'Starting at $5 / piece',
+        tagline: 'Beautifully curated mini gifts to thank your guests.',
+        imageBg: 'from-emerald-50 to-teal-100',
+        badge: 'Bulk Order',
+        includes: [
+          'Mini hampers',
+          'Customized gourmet jars',
+          'Scented candles',
+          'Artisan chocolates',
+          'Personalized gift tags & ribbons'
+        ],
+        idealFor: 'Weddings • Engagements • Baby Showers • Corporate Events • Festivals',
+        customizable: 'Bulk quantities with custom tags and matching event themes.'
+      },
+      {
+        id: 'corporate-gifting',
+        category: 'corporate',
+        title: 'Corporate Gifting Suite',
+        price: 'Custom Quotes Available',
+        tagline: 'Make your clients, employees, and partners feel truly valued.',
+        imageBg: 'from-slate-100 to-gray-200',
+        badge: 'Corporate',
+        includes: [
+          'Custom branded packaging',
+          'Employee appreciation boxes',
+          'Client gratitude hampers',
+          'Holiday gifting bundles',
+          'Brand event gift suites'
+        ],
+        idealFor: 'Employee Appreciation • Client Gifting • Holiday Gifting • Brand Events',
+        customizable: 'Bulk orders welcome. Logo engraving & corporate color ribbons.'
+      }
+    ];
+
+    // State
+    let selectedOccasion = 'Birthday';
+    let currentFilter = 'all';
+
+    // DOM Elements
+    const grid = document.getElementById('catalogueGrid');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const searchInput = document.getElementById('searchInput');
+
+    // Render Function
+    function renderCatalogue(filter = 'all', search = '') {
+      grid.innerHTML = '';
+      
+      const filtered = hampers.filter(h => {
+        const matchesCategory = filter === 'all' || h.category === filter;
+        const matchesSearch = h.title.toLowerCase().includes(search.toLowerCase()) || 
+                              h.tagline.toLowerCase().includes(search.toLowerCase()) ||
+                              h.idealFor.toLowerCase().includes(search.toLowerCase());
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full text-center py-12 text-brand-dark/60">
+            <p class="font-serif-title text-2xl">No hampers found</p>
+            <p class="text-xs">Try adjusting your search terms or filter selections.</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(h => {
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-3xl overflow-hidden border border-brand-rose/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group';
+        card.innerHTML = `
+          <!-- Graphic Banner Placeholder -->
+          <div class="h-48 bg-gradient-to-br ${h.imageBg} relative p-6 flex flex-col justify-between overflow-hidden">
+            <div class="flex justify-between items-start z-10">
+              <span class="bg-white/90 backdrop-blur-md text-brand-dark text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                ${h.badge}
+              </span>
+              <span class="font-serif-title text-xl font-bold text-brand-dark bg-white/70 px-3 py-1 rounded-full backdrop-blur-sm">
+                ${h.price}
+              </span>
+            </div>
+            
+            <div class="z-10">
+              <h3 class="font-serif-title text-2xl font-bold text-brand-dark group-hover:text-brand-gold transition">
+                ${h.title}
+              </h3>
+            </div>
+
+            <!-- Soft SVG decorative element -->
+            <svg class="absolute -right-6 -bottom-6 w-32 h-32 opacity-20 text-brand-dark" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </div>
+
+          <!-- Body -->
+          <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+            <div>
+              <p class="text-xs text-brand-dark/80 italic mb-4 leading-relaxed">${h.tagline}</p>
+              
+              <div class="space-y-1.5">
+                <p class="text-[11px] font-semibold uppercase tracking-wider text-brand-accent">Highlights:</p>
+                <ul class="text-xs text-brand-dark/75 space-y-1">
+                  ${h.includes.slice(0, 4).map(item => `<li class="flex items-center space-x-2"><span class="text-brand-gold">•</span><span>${item}</span></li>`).join('')}
+                  ${h.includes.length > 4 ? `<li class="text-[10px] text-brand-accent italic">+ ${h.includes.length - 4} more items</li>` : ''}
+                </ul>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-brand-rose/30 flex items-center justify-between gap-2">
+              <button onclick="openModal('${h.id}')" class="text-xs text-brand-gold hover:text-brand-goldhover font-semibold tracking-wide flex items-center space-x-1">
+                <span>View Full Details</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+              
+              <button onclick="openInquiryModal('${h.title}')" class="px-4 py-2 bg-brand-cream hover:bg-brand-rose/40 text-brand-dark rounded-full text-xs font-semibold transition">
+                Inquire
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Filter Handlers
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-brand-gold', 'text-white');
+          b.classList.add('bg-white', 'text-brand-dark');
+        });
+        btn.classList.remove('bg-white', 'text-brand-dark');
+        btn.classList.add('bg-brand-gold', 'text-white');
+        
+        currentFilter = btn.dataset.filter;
+        renderCatalogue(currentFilter, searchInput.value);
+      });
+    });
+
+    searchInput.addEventListener('input', (e) => {
+      renderCatalogue(currentFilter, e.target.value);
+    });
+
+    // Modal Operations
+    function openModal(id) {
+      const h = hampers.find(item => item.id === id);
+      if (!h) return;
+
+      const modalContent = document.getElementById('modalContent');
+      modalContent.innerHTML = `
+        <div class="space-y-5">
+          <div class="border-b border-brand-rose/40 pb-4">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-brand-accent bg-brand-rose/40 px-3 py-1 rounded-full">${h.badge}</span>
+            <h2 class="font-serif-title text-3xl font-bold text-brand-dark mt-2">${h.title}</h2>
+            <p class="font-serif-title text-xl font-semibold text-brand-gold">${h.price}</p>
+          </div>
+
+          <p class="text-xs text-brand-dark/80 italic">${h.tagline}</p>
+
+          <div class="space-y-2">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-brand-dark">What's Included:</h4>
+            <ul class="text-xs space-y-1.5 text-brand-dark/80 bg-brand-cream/60 p-4 rounded-2xl border border-brand-rose/30">
+              ${h.includes.map(inc => `<li class="flex items-center space-x-2"><span class="text-brand-gold">✓</span><span>${inc}</span></li>`).join('')}
+            </ul>
+          </div>
+
+          <div class="space-y-1 text-xs">
+            <p><strong>Ideal For:</strong> ${h.idealFor}</p>
+            <p class="text-brand-accent"><strong>Customization:</strong> ${h.customizable}</p>
+          </div>
+
+          <div class="pt-4 flex gap-3">
+            <button onclick="openInquiryModal('${h.title}'); closeModal();" class="w-full bg-brand-gold text-white py-3 rounded-xl text-xs font-semibold uppercase tracking-wider hover:bg-brand-goldhover transition shadow-md">
+              Order / Inquire Now
+            </button>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('detailsModal').classList.remove('hidden');
+    }
+
+    function openInquiryModal(hamperTitle) {
+      const modalContent = document.getElementById('modalContent');
+      modalContent.innerHTML = `
+        <div class="space-y-4">
+          <div class="border-b border-brand-rose/40 pb-3">
+            <h2 class="font-serif-title text-2xl font-bold text-brand-dark">Inquire: ${hamperTitle}</h2>
+            <p class="text-xs text-brand-dark/70">Fill out your contact info to place an inquiry or request custom pricing.</p>
+          </div>
+
+          <form onsubmit="handleFormSubmit(event, '${hamperTitle}')" class="space-y-3">
+            <div>
+              <label class="block text-[11px] font-semibold text-brand-dark uppercase">Your Name</label>
+              <input type="text" required id="inqName" placeholder="e.g. Sarah Jenkins" class="w-full mt-1 p-2.5 bg-brand-cream/50 border border-brand-rose/60 rounded-xl text-xs focus:outline-none focus:border-brand-gold" />
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-semibold text-brand-dark uppercase">Email / Phone</label>
+              <input type="text" required id="inqContact" placeholder="e.g. sarah@example.com or phone" class="w-full mt-1 p-2.5 bg-brand-cream/50 border border-brand-rose/60 rounded-xl text-xs focus:outline-none focus:border-brand-gold" />
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-semibold text-brand-dark uppercase">Event Date / Notes</label>
+              <textarea id="inqNotes" rows="3" placeholder="Occasion, target date, or specific customization requests..." class="w-full mt-1 p-2.5 bg-brand-cream/50 border border-brand-rose/60 rounded-xl text-xs focus:outline-none focus:border-brand-gold"></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-brand-gold text-white py-3 rounded-xl text-xs font-semibold uppercase tracking-wider hover:bg-brand-goldhover transition shadow-md">
+              Send Inquiry
+            </button>
+          </form>
+        </div>
+      `;
+
+      document.getElementById('detailsModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('detailsModal').classList.add('hidden');
+    }
+
+    function handleFormSubmit(e, itemTitle) {
+      e.preventDefault();
+      const name = document.getElementById('inqName').value;
+      const contact = document.getElementById('inqContact').value;
+      const notes = document.getElementById('inqNotes').value;
+
+      closeModal();
+      showToast(`Thank you, ${name}! Your inquiry for "${itemTitle}" has been prepared.`);
+    }
+
+    // Interactive Custom Builder Logic
+    function selectBuilderOption(type, val) {
+      if (type === 'occasion') {
+        selectedOccasion = val;
+        const btns = document.querySelectorAll('#builderOccasion button');
+        btns.forEach(b => {
+          if (b.textContent === val) {
+            b.classList.add('bg-brand-gold', 'text-white', 'border-brand-gold');
+          } else {
+            b.classList.remove('bg-brand-gold', 'text-white', 'border-brand-gold');
+          }
+        });
+        updateCustomizerSummary();
+      }
+    }
+
+    function updateBudget(val) {
+      document.getElementById('budgetValue').textContent = `$${val}`;
+      document.getElementById('sumBudget').textContent = `$${val}`;
+    }
+
+    function updateCustomizerSummary() {
+      document.getElementById('sumOccasion').textContent = selectedOccasion;
+      
+      const checkboxes = document.querySelectorAll('.builder-checkbox:checked');
+      const selected = Array.from(checkboxes).map(c => c.value);
+      
+      const sumItems = document.getElementById('sumItems');
+      if (selected.length > 0) {
+        sumItems.textContent = selected.join(', ');
+      } else {
+        sumItems.textContent = 'None selected';
+      }
+    }
+
+    function copyCustomizerDetails() {
+      const budget = document.getElementById('budgetValue').textContent;
+      const checkboxes = document.querySelectorAll('.builder-checkbox:checked');
+      const selected = Array.from(checkboxes).map(c => c.value);
+      
+      const text = `Hi Aura Gifting Studio! I'd like to create a custom hamper:\n` +
+                   `• Occasion: ${selectedOccasion}\n` +
+                   `• Budget: ${budget}\n` +
+                   `• Preferred Inclusions: ${selected.length > 0 ? selected.join(', ') : 'Open to recommendations'}\n` +
+                   `Can you help me design this?`;
+
+      copyToClipboard(text);
+      showToast('Custom hamper specs copied! Paste into Instagram DM or message.');
+    }
+
+    function copyInstagramDM() {
+      const text = `Hi Aura Gifting Studio! I loved your catalogue and would like to inquire about creating a personalized gift hamper.`;
+      copyToClipboard(text);
+      showToast('Direct message template copied to clipboard!');
+    }
+
+    function copyToClipboard(text) {
+      const dummy = document.createElement("textarea");
+      document.body.appendChild(dummy);
+      dummy.value = text;
+      dummy.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummy);
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3500);
+    }
+
+    function scrollToCustomizer() {
+      document.getElementById('customizer').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+
+    // Initial Setup
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCatalogue();
+      selectBuilderOption('occasion', 'Birthday');
+      updateBudget(150);
+    });
+  </script>
+</body>
+</html>
